@@ -36,7 +36,7 @@ function NovaTarefa() {
                 <div>
                     <label htmlFor="dataConclusao">Data</label>
                     <input 
-                    type="data" 
+                    type="date" 
                     id="dataConclusao" 
                     className="form-control"
                     {...register("dataConclusao")}
