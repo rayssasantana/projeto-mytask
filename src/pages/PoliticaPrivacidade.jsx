@@ -3,7 +3,7 @@ import { Container, Accordion } from "react-bootstrap";
 
 function PoliticaProvacidade() {
     return (
-        <Container className="mt-4 min-vh-100">
+        <Container className="mt-4">
             <h1>Políticas de Privacidade</h1>
                 <Accordion defaultActiveKey="0">
                     <Accordion.Item eventKey="0">

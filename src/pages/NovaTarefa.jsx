@@ -1,16 +1,47 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { addTarefa } from "../firebase/tarefas";
+import toast from "react-hot-toast";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UsuarioContext } from "../contexts/UsuarioContext";
+
 
 function NovaTarefa() {
-    const { register, handleSubmit, formState: { errors } } = useForm(); 
+    const { 
+    register,
+    handleSubmit, 
+    formState: { errors } 
+    } = useForm();
+    
+    const usuario = useContext(UsuarioContext);
+
+    const navigate = useNavigate(); // função que leva o usuário para qualquer página que eu quiser, forçadamente.
 
     function salvarTarefa(data) {
-        console.log("Salvar tarefa");
-        console.log(data);
+        // Os dados do formulário são passadas para a função de inserir
+        // Then: aguarda a insernção da tarefa para então exibir o toast
+        // Novo campo no documento que acossia o usuário e a tarefa que ele criou
+        data.idUsuario = usuario.uid; // usuário que vem do firebase
+        addTarefa(data)
+         .then(() => {
+            toast.success("Tarefa adicionada com sucesso!");
+            // Redirecionar o usuário para /tarefas
+            navigate("/tarefas"); // mas só suporta links internos. "navegação imperativa". Colocar em eventos.
+
+        })
+         .catch(() => {
+            toast.error("Um erro aonteceu ao adicionar a tarefa!");
+        });
+    }
+
+    // Lógica de renderização condicional, vai sempre no final da função
+    if(usuario === null) {
+        return <Navigate to="/login" />
     }
 
     return (
-        <main className="min-vh-100">
+        <main className="mt-4">
             <form className="form-section" onSubmit={handleSubmit(salvarTarefa)}>
                 <h1>Adicionar tarefa</h1>    
                 <hr />            

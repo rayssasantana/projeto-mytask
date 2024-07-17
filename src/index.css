@@ -8,3 +8,14 @@
 .invalid {
     color: red;
 }
+
+main {
+    min-height: 76vh;
+}
+
+.navbar {
+    margin-top: 0;
+}
+
+/* calc(100vh - 112px) */
+

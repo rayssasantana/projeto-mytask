@@ -3,8 +3,8 @@ import "../NotFound.css";
 
 function NotFound() {
     return (
-        <main className="min-vh-100">
-            <Container className="mt-4">
+        <main className="mt-4">
+            <Container>
                 <Figure>
                     <Figure.Image
                         width={400}

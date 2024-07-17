@@ -3,7 +3,7 @@ import "../Home.css";
 
 function Home() {
     return (
-        <main className="mt-4 min-vh-100">
+        <main className="mt-4">
             <Container>
                 <h1>Home</h1>
                 <section className="card-caixa">

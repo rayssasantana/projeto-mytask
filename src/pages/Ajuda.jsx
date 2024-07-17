@@ -2,7 +2,7 @@ import { Container, Accordion, Button, Alert } from "react-bootstrap";
 
 function Ajuda() {
     return (
-        <main className="mt-4 min-vh-100">
+        <main className="mt-4">
             <Container>
                 <h1>Ajuda</h1>
                 <hr />
